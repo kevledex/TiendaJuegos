@@ -1,7 +1,21 @@
 import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { RegistroScreen } from './src/screens/RegistroScreen';
+import { StyleSheet } from 'react-native';
 
-export const App = () => {
+const App = () => {
   return (
-    <div>App</div>
+    <SafeAreaView style={styles.container}>
+      <RegistroScreen/>
+    </SafeAreaView>
   )
 }
+
+export default App;
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#0F172A',
+        flex: 1
+    },
+})
