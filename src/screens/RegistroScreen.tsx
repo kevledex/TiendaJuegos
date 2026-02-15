@@ -29,6 +29,10 @@ export const RegistroScreen = () => {
 
             <Text style={styles.text}>O registrate con</Text>
 
+            <TouchableOpacity>
+                <Text style={[styles.text, styles.textIniciarSesion]}>¿Ya tienes cuenta? Inicia Sesión aquí</Text>
+            </TouchableOpacity>
+
             <View style={styles.buttonOtrasRedes}>
                 <TouchableOpacity>
                     <Image source={{ uri:'https://i.postimg.cc/gkb2XygJ/icono-google.png' }} style={{ width: 40, height: 40 }}/>
@@ -42,10 +46,6 @@ export const RegistroScreen = () => {
                     <Image source={{ uri:'https://i.postimg.cc/fbPwwYVm/icono-discord.png' }} style={{ width: 40, height: 30 }}/>
                 </TouchableOpacity>
             </View>
-
-            <TouchableOpacity>
-                <Text style={[styles.text, styles.textIniciarSesion]}>¿Ya tienes cuenta? Inicia Sesión</Text>
-            </TouchableOpacity>
 
         </View>
     )
@@ -74,8 +74,9 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     textIniciarSesion: {
-        fontSize: 15,
-        marginTop: 20,
+        fontSize: 13,
+        marginTop: 14,
+        color: '#00ccff'
     },
     inputs: {
         width: 300,
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     buttonOtrasRedes: {
+        marginTop: 30,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

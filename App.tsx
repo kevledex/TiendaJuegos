@@ -2,11 +2,13 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RegistroScreen } from './src/screens/RegistroScreen';
 import { StyleSheet } from 'react-native';
+import { IniciarSesionScreen } from './src/screens/IniciarSesionScreen';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <RegistroScreen/>
+      {/* <RegistroScreen/> */}
+    <IniciarSesionScreen/>
     </SafeAreaView>
   )
 }
