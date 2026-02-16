@@ -7,7 +7,7 @@ import { IniciarSesionScreen } from './src/screens/IniciarSesionScreen';
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      {/* <RegistroScreen/> */}
+    {/* <RegistroScreen/> */}
     <IniciarSesionScreen/>
     </SafeAreaView>
   )
