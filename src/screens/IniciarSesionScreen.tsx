@@ -16,19 +16,12 @@ export const IniciarSesionScreen = () => {
             </View>
 
 
-            <TouchableOpacity style={[styles.inputs]}>
+            <TouchableOpacity style={[styles.inputs,  styles.inputCrear]}>
                 <Text style={styles.buttonText}>INICIAR SESIÓN</Text>
             </TouchableOpacity>
-            
-            <TouchableOpacity>
-                <Text style={[styles.text, styles.textRegistro]}>Ayudada, no puedo iniciar sesión</Text>
-            </TouchableOpacity>
 
-            <TouchableOpacity>
-                <Text style={[styles.text, styles.textRegistro]}>¿No tienes cuenta? Registrate aquí</Text>
-            </TouchableOpacity>
+            <Text style={styles.text}>O Inicia Sesión con:</Text>
 
-                        
             <View style={styles.buttonOtrasRedes}>
                 <TouchableOpacity>
                     <Image source={{ uri:'https://i.postimg.cc/gkb2XygJ/icono-google.png' }} style={{ width: 40, height: 40 }}/>
@@ -42,6 +35,15 @@ export const IniciarSesionScreen = () => {
                     <Image source={{ uri:'https://i.postimg.cc/fbPwwYVm/icono-discord.png' }} style={{ width: 40, height: 30 }}/>
                 </TouchableOpacity>
             </View>
+            
+            <TouchableOpacity>
+                <Text style={[styles.text, styles.textRegistro]}>Ayudada, no puedo iniciar sesión</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+                <Text style={[styles.text, styles.textRegistro]}>¿No tienes cuenta? Registrate aquí</Text>
+            </TouchableOpacity>
+
 
         </View>
     )
@@ -85,9 +87,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#070f22',
         marginVertical: 10,
     },
+
+    inputCrear: {
+        borderColor: '#00a2ff',
+        width: 300,
+        height: 65,
+        borderRadius: 45,
+        elevation: 10,
+        shadowColor: '#00a2ff',
+        marginTop: 20,
+        marginBottom: 20,
+    },
     
     buttonOtrasRedes: {
-        marginTop: 30,
+        marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

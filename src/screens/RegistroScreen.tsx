@@ -7,19 +7,19 @@ export const RegistroScreen = () => {
             <Text style={[styles.text, styles.title]}>Regístrate</Text>
             <Text style={[styles.text, styles.subtitulo]}>Únete a la comunidad</Text>
 
-            <View style={[styles.inputs, styles.inputUsuario]}>
+            <View style={[styles.inputs]}>
                 <TextInput style={styles.buttonText} placeholder='Nombre de Usuario' placeholderTextColor='#7c7c7c'></TextInput>
             </View>
 
-            <View style={[styles.inputs, styles.inputCorreo]}>
+            <View style={[styles.inputs]}>
                 <TextInput style={styles.buttonText} placeholder='Correo Electrónico' placeholderTextColor='#7c7c7c'></TextInput>
             </View>
 
-            <View style={[styles.inputs, styles.inputPassword]}>
+            <View style={[styles.inputs]}>
                 <TextInput style={styles.buttonText} placeholder='Contraseña' placeholderTextColor='#7c7c7c'></TextInput>
             </View>
 
-            <View style={[styles.inputs, styles.inputConfirmarPassword]}>
+            <View style={[styles.inputs]}>
                 <TextInput style={styles.buttonText} placeholder='Confirmar Contraseña' placeholderTextColor='#7c7c7c'></TextInput>
             </View>
 
@@ -27,11 +27,7 @@ export const RegistroScreen = () => {
                 <Text style={styles.buttonText}>CREAR CUENTA</Text>
             </TouchableOpacity>
 
-            <Text style={styles.text}>O registrate con</Text>
-
-            <TouchableOpacity>
-                <Text style={[styles.text, styles.textIniciarSesion]}>¿Ya tienes cuenta? Inicia Sesión aquí</Text>
-            </TouchableOpacity>
+            <Text style={styles.text}>O registrate con:</Text>
 
             <View style={styles.buttonOtrasRedes}>
                 <TouchableOpacity>
@@ -46,6 +42,11 @@ export const RegistroScreen = () => {
                     <Image source={{ uri:'https://i.postimg.cc/fbPwwYVm/icono-discord.png' }} style={{ width: 40, height: 30 }}/>
                 </TouchableOpacity>
             </View>
+
+            <TouchableOpacity>
+                <Text style={[styles.text, styles.textIniciarSesion]}>¿Ya tienes cuenta? Inicia Sesión aquí</Text>
+            </TouchableOpacity>
+
 
         </View>
     )
@@ -79,28 +80,17 @@ const styles = StyleSheet.create({
         color: '#00ccff'
     },
     inputs: {
+        borderColor: '#00a2ff',
         width: 300,
         height: 60,
         borderWidth: 1,
-        borderColor: 'white',
         elevation: 8,
         borderRadius: 20,
         justifyContent: 'center',
         backgroundColor: '#070f22',
         marginVertical: 10,
     },
-    inputUsuario: {
-        borderColor: '#00a2ff',
-    },
-    inputCorreo: {
-        borderColor: '#00a2ff',
-    },
-    inputPassword: {
-        borderColor: '#00a2ff',
-    },
-    inputConfirmarPassword: {
-        borderColor: '#00a2ff',
-    },
+    
     inputCrear: {
         borderColor: '#00a2ff',
         width: 300,
@@ -112,7 +102,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     buttonOtrasRedes: {
-        marginTop: 30,
+        marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
