@@ -1,55 +1,59 @@
 import { StyleSheet } from "react-native";
+import { PRIMARY_COLOR, QUATERNARY_COLOR, QUINARY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from "../common/const";
 
-export const stylesRegistro = StyleSheet.create({
-    container: {
-        backgroundColor: '#0F172A',
+export const stylesGlobal = StyleSheet.create({
+    containerBody: {
         flex: 1,
         alignItems: 'center',
         paddingVertical: 40,
+        backgroundColor: PRIMARY_COLOR,
+        paddingHorizontal: 30,
+        paddingTop: 30
     },
     text: {
         textAlign: 'center',
-        color: 'white',
+        color: SECONDARY_COLOR,
         marginBottom: 10,
     },
     title: {
         fontSize: 35,
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: 5,
     },
     subtitulo: {
         textAlign: 'center',
         fontSize: 20,
-        marginBottom: 30,
+        marginBottom: 15,
     },
     textRegistro: {
         fontSize: 13,
         marginTop: 14,
-        color: '#00ccff'
+        color: TERTIARY_COLOR
     },
     inputs: {
-        borderColor: '#00a2ff',
+        borderColor: QUATERNARY_COLOR,
         width: 300,
         height: 60,
         borderWidth: 1,
         elevation: 8,
         borderRadius: 20,
         justifyContent: 'center',
-        backgroundColor: '#070f22',
+        backgroundColor: QUINARY_COLOR,
         marginVertical: 10,
     },
-
-    inputCrear: {
-        borderColor: '#00a2ff',
+    button: {
+        borderColor: QUATERNARY_COLOR,
         width: 300,
         height: 65,
         borderRadius: 45,
         elevation: 10,
-        shadowColor: '#00a2ff',
+        shadowColor: QUATERNARY_COLOR,
         marginTop: 20,
         marginBottom: 20,
     },
-    
+    containerInput: {
+        marginVertical: 10,
+    },
     buttonOtrasRedes: {
         marginTop: 10,
         flexDirection: 'row',
@@ -59,9 +63,13 @@ export const stylesRegistro = StyleSheet.create({
         marginVertical: 10,
     },
     buttonText: {
-        color: 'white',
+        color: SECONDARY_COLOR,
         fontSize: 15,
         textAlign: 'center',
         fontWeight: 'bold',
     },
-})
+    image: {
+        width: 40,
+        height: 40
+    }
+});

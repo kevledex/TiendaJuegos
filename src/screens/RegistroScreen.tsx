@@ -1,54 +1,100 @@
-import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { stylesRegistro } from './Theme/AppInicialTheme'
+import React, { useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { stylesGlobal } from '../theme/AppTheme';
+import { BodyComponent } from '../components/BodyComponent';
+import { InputComponent } from '../components/InputComponent';
+import { ButtonComponent } from '../components/BottonComponent';
+import { ButtonRSocialComponent } from '../components/ButtonRSocialComponent';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+
+interface FormRegistro {
+    nombreUsuario: string;
+    correo: string;
+    contrasena: string;
+    confirmarContrasena: string;
+}
 
 export const RegistroScreen = () => {
+    const navigation = useNavigation();
+
+    const [formRegistro, setFormRegistro] = useState<FormRegistro>({
+        nombreUsuario: '',
+        correo: '',
+        contrasena: '',
+        confirmarContrasena: ''
+    });
+
+    const handleChangeValue = (name: string, value: string) => {
+        setFormRegistro({
+            ...formRegistro,
+            [name]: value
+        });
+    }
+
+    const handleRegistro = () => {
+        console.log('Datos de registro:', formRegistro);
+    }
+
     return (
-        <View style={stylesRegistro.container}>
-            <Text style={[stylesRegistro.text, stylesRegistro.title]}>Regístrate</Text>
-            <Text style={[stylesRegistro.text, stylesRegistro.subtitulo]}>Únete a la comunidad</Text>
+        <BodyComponent>
+            <View style={stylesGlobal.containerBody}>
+                <Text style={[stylesGlobal.text, stylesGlobal.title]}>Regístrate</Text>
+                <Text style={[stylesGlobal.text, stylesGlobal.subtitulo]}>Únete a la comunidad</Text>
 
-            <View style={[stylesRegistro.inputs]}>
-                <TextInput style={stylesRegistro.buttonText} placeholder='Nombre de Usuario' placeholderTextColor='#7c7c7c'></TextInput>
-            </View>
+                <View style={stylesGlobal.containerInput}>
+                    <InputComponent
+                        placeholder='Nombre de Usuario'
+                        placeholderTextColor='#7c7c7c'
+                        handleChangeValue={handleChangeValue}
+                        name='nombreUsuario'
+                        keyboardType='default'
+                    />
+                    <InputComponent
+                        placeholder='Correo Electrónico'
+                        placeholderTextColor='#7c7c7c'
+                        handleChangeValue={handleChangeValue}
+                        name='correo'
+                        keyboardType='email-address'
+                    />
+                    <InputComponent
+                        placeholder='Contraseña'
+                        placeholderTextColor='#7c7c7c'
+                        handleChangeValue={handleChangeValue}
+                        name='contrasena'
+                        keyboardType='default'
+                        secureTextEntry={true}
+                    />
+                    <InputComponent
+                        placeholder='Confirmar Contraseña'
+                        placeholderTextColor='#7c7c7c'
+                        handleChangeValue={handleChangeValue}
+                        name='confirmarContrasena'
+                        keyboardType='default'
+                        secureTextEntry={true}
+                    />
+                </View>
 
-            <View style={[stylesRegistro.inputs]}>
-                <TextInput style={stylesRegistro.buttonText} placeholder='Correo Electrónico' placeholderTextColor='#7c7c7c'></TextInput>
-            </View>
+                <ButtonComponent
+                    buttonText='CREAR CUENTA'
+                    onPress={handleRegistro}
+                />
 
-            <View style={[stylesRegistro.inputs]}>
-                <TextInput style={stylesRegistro.buttonText} placeholder='Contraseña' placeholderTextColor='#7c7c7c'></TextInput>
-            </View>
+                <Text style={stylesGlobal.text}>O regístrate con:</Text>
 
-            <View style={[stylesRegistro.inputs]}>
-                <TextInput style={stylesRegistro.buttonText} placeholder='Confirmar Contraseña' placeholderTextColor='#7c7c7c'></TextInput>
-            </View>
+                <View style={stylesGlobal.buttonOtrasRedes}>
+                    <ButtonRSocialComponent
+                        uri='https://i.postimg.cc/gkb2XygJ/icono-google.png' />
+                    <ButtonRSocialComponent
+                        uri='https://i.postimg.cc/y8v1bMBt/icono-facebook.png' />
+                    <ButtonRSocialComponent
+                        uri='https://i.postimg.cc/d0BbyyLY/discord-logo.png' />
+                </View>
 
-            <TouchableOpacity style={[stylesRegistro.inputs, stylesRegistro.inputCrear]}>
-                <Text style={stylesRegistro.buttonText}>CREAR CUENTA</Text>
-            </TouchableOpacity>
-
-            <Text style={stylesRegistro.text}>O registrate con:</Text>
-
-            <View style={stylesRegistro.buttonOtrasRedes}>
-                <TouchableOpacity>
-                    <Image source={{ uri:'https://i.postimg.cc/gkb2XygJ/icono-google.png' }} style={{ width: 40, height: 40 }}/>
+                <TouchableOpacity onPress={() => navigation.dispatch(CommonActions.navigate({ name: 'LoginScreen' }))}>
+                    <Text style={[stylesGlobal.text, stylesGlobal.textRegistro]}>¿Ya tienes cuenta? Inicia Sesión aquí</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
-                    <Image source={{ uri:'https://i.postimg.cc/y8v1bMBt/icono-facebook.png' }} style={{ width: 40, height: 40 }}/>
-                </TouchableOpacity>
-
-                <TouchableOpacity>
-                    <Image source={{ uri:'https://i.postimg.cc/fbPwwYVm/icono-discord.png' }} style={{ width: 40, height: 30 }}/>
-                </TouchableOpacity>
             </View>
-
-            <TouchableOpacity>
-                <Text style={[stylesRegistro.text, stylesRegistro.textRegistro]}>¿Ya tienes cuenta? Inicia Sesión aquí</Text>
-            </TouchableOpacity>
-
-
-        </View>
+        </BodyComponent>
     )
 }
