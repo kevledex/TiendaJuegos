@@ -30,6 +30,14 @@ export const stylesGlobal = StyleSheet.create({
         marginTop: 14,
         color: TERTIARY_COLOR
     },
+    
+    textMostrar: {
+        fontSize: 13,
+        marginLeft: 8, 
+        
+        color: SECONDARY_COLOR
+    },
+
     inputs: {
         borderColor: QUATERNARY_COLOR,
         width: 300,

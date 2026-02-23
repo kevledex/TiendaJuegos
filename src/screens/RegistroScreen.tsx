@@ -100,7 +100,7 @@ export const RegistroScreen = () => {
                     iconEye={ChangeIconEye1()}
                     onPress={() => setShowPassword(!showPassword)}/>
 
-                    <Text style={[stylesGlobal.text, {marginLeft: 8}]}>
+                    <Text style={stylesGlobal.textMostrar}>
                     Mostrar Contraseña
                     </Text>
                 </View>
@@ -119,7 +119,7 @@ export const RegistroScreen = () => {
                     iconEye={ChangeIconEye2()}
                     onPress={() => setShowPasswordConf(!showPasswordConf)}/>
 
-                    <Text style={[stylesGlobal.text, {marginLeft: 8}]}>
+                    <Text style={stylesGlobal.textMostrar}>
                     Ocultar Contraseña
                     </Text>
                 </View>
