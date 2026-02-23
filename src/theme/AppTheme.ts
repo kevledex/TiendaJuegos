@@ -16,14 +16,14 @@ export const stylesGlobal = StyleSheet.create({
         marginBottom: 10,
     },
     title: {
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 5,
     },
     subtitulo: {
         textAlign: 'center',
-        fontSize: 20,
-        marginBottom: 15,
+        fontSize: 18,
+        marginBottom: 8,
     },
     textRegistro: {
         fontSize: 13,
@@ -49,21 +49,21 @@ export const stylesGlobal = StyleSheet.create({
         borderRadius: 45,
         elevation: 10,
         shadowColor: QUATERNARY_COLOR,
-        marginTop: 20,
-        marginBottom: 20,
+        marginTop: 6,
+        marginBottom: 18,
     },
 
     buttonMostar: {
         backgroundColor: SENARY_COLOR,
         borderColor: TERTIARY_COLOR ,
-        width: 140,
-        height: 40,
+        width: 35,
+        height: 30,
         borderRadius: 10,
         elevation: 10,
         shadowColor: QUATERNARY_COLOR,
-        margin: 20,
-        alignSelf:'center'
-        
+        marginTop: 6,
+        marginBottom: 6,
+        alignItems: 'center'
     },
 
     buttonTextMostrar: {
@@ -72,6 +72,15 @@ export const stylesGlobal = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
     },
+
+    buttonIcon: {
+        width: 20,
+        height: 20,
+        alignSelf:'center',
+
+    },
+
+
     containerInput: {
         marginVertical: 10,
     },

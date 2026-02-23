@@ -39,17 +39,30 @@ export const RegistroScreen = () => {
     
     const [showPassword, setShowPassword] = useState(true);
 
-    /* const [showPasswordConf, setShowPasswordConf] = useState(true); */
+    const [showPasswordConf, setShowPasswordConf] = useState(true); 
 
-    const ChangeShowText1 = () => {
+    /* const ChangeShowText1 = () => {
         return showPassword ? 'Mostrar Contraseña' : 'Ocultar Contraseña';
         
-    }
+    } */
 
     /* const ChangeShowText2 = () => {
         return showPasswordConf ? 'Mostrar Contraseña' : 'Ocultar Contraseña';
         
     } */
+
+    const showEye = {uri:'https://i.postimg.cc/QCSNJJhJ/mostrar.png'};
+    const hideEye = {uri:'https://i.postimg.cc/ZnjYxx4P/esconder.png'};
+
+    const ChangeIconEye1 = () => {
+        return showPassword ? showEye : hideEye;
+        
+    }
+
+    const ChangeIconEye2 = () => {
+        return showPasswordConf ? showEye : hideEye;
+        
+    }
 
     return (
         <BodyComponent>
@@ -82,10 +95,15 @@ export const RegistroScreen = () => {
                         keyboardType='default'
                         secureTextEntry={showPassword}
                     />
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <ButtonMonstrar
-                        buttonText={ChangeShowText1()}
-                        onPress={() => setShowPassword(!showPassword)}/>
-                    
+                    iconEye={ChangeIconEye1()}
+                    onPress={() => setShowPassword(!showPassword)}/>
+
+                    <Text style={[stylesGlobal.text, {marginLeft: 8}]}>
+                    Mostrar Contraseña
+                    </Text>
+                </View>
 
                     <InputComponent
                         placeholder='Confirmar Contraseña'
@@ -96,7 +114,17 @@ export const RegistroScreen = () => {
                         secureTextEntry={true}
                     />
 
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <ButtonMonstrar
+                    iconEye={ChangeIconEye2()}
+                    onPress={() => setShowPasswordConf(!showPasswordConf)}/>
+
+                    <Text style={[stylesGlobal.text, {marginLeft: 8}]}>
+                    Ocultar Contraseña
+                    </Text>
                 </View>
+
+            </View>
 
                 <ButtonComponent
                     buttonText='CREAR CUENTA'

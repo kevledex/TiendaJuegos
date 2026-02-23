@@ -1,20 +1,26 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
-import { stylesGlobal } from '../theme/AppTheme'
+import { ImageSourcePropType, Text, TouchableOpacity, View, Image } from 'react-native'
+import { stylesGlobal } from '../theme/AppTheme';
 
 interface Props {
-    buttonText: string;
+    
+    iconEye?: ImageSourcePropType; 
     onPress: () => void;
     
 }
 
-export const ButtonMonstrar = ({ buttonText, onPress }: Props) => {
+export const ButtonMonstrar = ({ iconEye, onPress }: Props) => {
     return (
         <TouchableOpacity 
         style={[stylesGlobal.inputs, stylesGlobal.buttonMostar]} 
         onPress={onPress} 
         >
-            <Text style={stylesGlobal.buttonTextMostrar}>{buttonText}</Text>
+    <View> 
+            <Image
+            source={iconEye}
+            style={[stylesGlobal.buttonIcon]}/>
+    </View>
+            
         </TouchableOpacity>
     )
 }
