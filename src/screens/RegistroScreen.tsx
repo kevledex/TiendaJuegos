@@ -6,6 +6,7 @@ import { InputComponent } from '../components/InputComponent';
 import { ButtonComponent } from '../components/BottonComponent';
 import { ButtonRSocialComponent } from '../components/ButtonRSocialComponent';
 import { CommonActions, useNavigation } from '@react-navigation/native';
+import { ButtonMonstrar } from '../components/ButtonMonstrar';
 
 interface FormRegistro {
     nombreUsuario: string;
@@ -35,6 +36,21 @@ export const RegistroScreen = () => {
         console.log('Datos de registro:', formRegistro);
     }
 
+    
+    const [showPassword, setShowPassword] = useState(true);
+
+    /* const [showPasswordConf, setShowPasswordConf] = useState(true); */
+
+    const ChangeShowText1 = () => {
+        return showPassword ? 'Mostrar Contraseña' : 'Ocultar Contraseña';
+        
+    }
+
+    /* const ChangeShowText2 = () => {
+        return showPasswordConf ? 'Mostrar Contraseña' : 'Ocultar Contraseña';
+        
+    } */
+
     return (
         <BodyComponent>
             <View style={stylesGlobal.containerBody}>
@@ -56,14 +72,21 @@ export const RegistroScreen = () => {
                         name='correo'
                         keyboardType='email-address'
                     />
+
+                    
                     <InputComponent
                         placeholder='Contraseña'
                         placeholderTextColor='#7c7c7c'
                         handleChangeValue={handleChangeValue}
                         name='contrasena'
                         keyboardType='default'
-                        secureTextEntry={true}
+                        secureTextEntry={showPassword}
                     />
+                    <ButtonMonstrar
+                        buttonText={ChangeShowText1()}
+                        onPress={() => setShowPassword(!showPassword)}/>
+                    
+
                     <InputComponent
                         placeholder='Confirmar Contraseña'
                         placeholderTextColor='#7c7c7c'
@@ -72,6 +95,9 @@ export const RegistroScreen = () => {
                         keyboardType='default'
                         secureTextEntry={true}
                     />
+
+
+
                 </View>
 
                 <ButtonComponent
@@ -79,7 +105,7 @@ export const RegistroScreen = () => {
                     onPress={handleRegistro}
                 />
 
-                <Text style={stylesGlobal.text}>O regístrate con:</Text>
+                <Text style={stylesGlobal.text}> O regístrate con:</Text>
 
                 <View style={stylesGlobal.buttonOtrasRedes}>
                     <ButtonRSocialComponent

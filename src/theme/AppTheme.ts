@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { PRIMARY_COLOR, QUATERNARY_COLOR, QUINARY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from "../common/const";
+import { PRIMARY_COLOR, QUATERNARY_COLOR, QUINARY_COLOR, SECONDARY_COLOR, SENARY_COLOR, TERTIARY_COLOR } from "../common/const";
 
 export const stylesGlobal = StyleSheet.create({
     containerBody: {
@@ -38,6 +38,7 @@ export const stylesGlobal = StyleSheet.create({
         elevation: 8,
         borderRadius: 20,
         justifyContent: 'center',
+        textAlign: 'center',
         backgroundColor: QUINARY_COLOR,
         marginVertical: 10,
     },
@@ -50,6 +51,26 @@ export const stylesGlobal = StyleSheet.create({
         shadowColor: QUATERNARY_COLOR,
         marginTop: 20,
         marginBottom: 20,
+    },
+
+    buttonMostar: {
+        backgroundColor: SENARY_COLOR,
+        borderColor: TERTIARY_COLOR ,
+        width: 140,
+        height: 40,
+        borderRadius: 10,
+        elevation: 10,
+        shadowColor: QUATERNARY_COLOR,
+        margin: 20,
+        alignSelf:'center'
+        
+    },
+
+    buttonTextMostrar: {
+        color: SECONDARY_COLOR,
+        fontSize: 12,
+        textAlign: 'center',
+        fontWeight: 'bold',
     },
     containerInput: {
         marginVertical: 10,
@@ -68,6 +89,7 @@ export const stylesGlobal = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
     },
+
     image: {
         width: 40,
         height: 40
