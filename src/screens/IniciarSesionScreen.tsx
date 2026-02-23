@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { stylesGlobal } from '../theme/AppTheme'
 
+
 export const IniciarSesionScreen = () => {
     return (
         <View style={stylesGlobal.containerBody}>
@@ -17,7 +18,7 @@ export const IniciarSesionScreen = () => {
             </View>
 
 
-            <TouchableOpacity style={[stylesGlobal.inputs,  stylesGlobal.inputCrear]}>
+            <TouchableOpacity style={[stylesGlobal.inputs]}>
                 <Text style={stylesGlobal.buttonText}>INICIAR SESIÓN</Text>
             </TouchableOpacity>
 
