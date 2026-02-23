@@ -96,8 +96,6 @@ export const RegistroScreen = () => {
                         secureTextEntry={true}
                     />
 
-
-
                 </View>
 
                 <ButtonComponent

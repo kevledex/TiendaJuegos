@@ -1,9 +1,12 @@
 import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { stylesGlobal } from '../theme/AppTheme'
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 
 export const IniciarSesionScreen = () => {
+    const navigation = useNavigation();
+
     return (
         <View style={stylesGlobal.containerBody}>
             <Text style={[stylesGlobal.text, stylesGlobal.title]}>Inicio de Sesión</Text>
@@ -42,7 +45,7 @@ export const IniciarSesionScreen = () => {
                 <Text style={[stylesGlobal.text, stylesGlobal.textRegistro]}>Ayudada, no puedo iniciar sesión</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.dispatch(CommonActions.navigate({ name: 'RegistroScreen' }))}>
                 <Text style={[stylesGlobal.text, stylesGlobal.textRegistro]}>¿No tienes cuenta? Registrate aquí</Text>
             </TouchableOpacity>
 
