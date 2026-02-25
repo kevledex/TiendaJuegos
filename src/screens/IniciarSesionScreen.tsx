@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { stylesGlobal } from '../theme/AppTheme'
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import { InputComponent } from '../components/InputComponent';
@@ -8,38 +8,62 @@ import { ButtonRSocialComponent } from '../components/ButtonRSocialComponent';
 import { BodyComponent } from '../components/BodyComponent';
 import { SECONDARY_COLOR } from '../common/const';
 import Icon from '@expo/vector-icons/MaterialIcons';
+import { User } from '../navigator/StackNavigator';
 
-interface FormRegistro {
+// Interfaz define la estructura del objeto del formulario
+interface FormLogin {
+    email: string;
+    password: string
+}
 
-    correo: string;
-    contrasena: string;
+//Interfaz que defie las propiedades de un componente
 
+interface Props{
+    users:User[];
 }
 
 
-export const IniciarSesionScreen = () => {
+export const IniciarSesionScreen = ({users}:Props) => {
     const navigation = useNavigation();
 
-    const [formRegistro, setFormRegistro] = useState<FormRegistro>({
+    const [formLogin, setFormLogin] = useState<FormLogin>({
 
-        correo: '',
-        contrasena: '',
+        email: '',
+        password: '',
 
     });
 
+     //funcion para verificar el usuario
+    const verifyUser =(): User =>{
+        const existUser = users.filter(user => user.email == formLogin.email && user.password == formLogin.password)[0]; 
+        return existUser
+    }
+
     const handleChangeValue = (name: string, value: string) => {
-        setFormRegistro({
-            ...formRegistro,
+        setFormLogin({
+            ...formLogin,
             [name]: value
         });
     }
 
-    const handleRegistro = () => {
-        console.log('Datos de registro:', formRegistro);
+    const handleLogin = () => {
+        if(formLogin.email=='' || formLogin.password=='' ){
+                Alert.alert("Error","Por favor complete todos los campos")
+                    return;
+            }
+
+    //verificar si existe el usuario
+        if(!verifyUser()){
+            Alert.alert('Error','Usuario y/o Contraseña Incorrectos');
+        return;
+        }
+        
+    //Navegacion a Home
+        navigation.dispatch(CommonActions.navigate({ name: 'Home' }))
     }
 
     
-    const [showPassword, setShowPassword] = useState(true);
+    const [showPassword, setShowPassword] = useState<boolean>(true);
 
 
 
@@ -55,7 +79,7 @@ export const IniciarSesionScreen = () => {
                         placeholder='Correo Electrónico'
                         placeholderTextColor='#7c7c7c'
                         handleChangeValue={handleChangeValue}
-                        name='correo'
+                        name='email'
                         keyboardType='email-address'
                     />
 
@@ -64,7 +88,7 @@ export const IniciarSesionScreen = () => {
                         placeholder='Contraseña'
                         placeholderTextColor='#7c7c7c'
                         handleChangeValue={handleChangeValue}
-                        name='contrasena'
+                        name='password'
                         keyboardType='default'
                         secureTextEntry={showPassword}
                     />
@@ -80,7 +104,7 @@ export const IniciarSesionScreen = () => {
 
                 <ButtonComponent
                     buttonText='INICIAR SESIÓN'
-                    onPress={handleRegistro}
+                    onPress={handleLogin}
                 />
 
                 <Text style={stylesGlobal.text}> O Inicia Sesión con:</Text>
@@ -94,7 +118,7 @@ export const IniciarSesionScreen = () => {
                         uri='https://i.postimg.cc/d0BbyyLY/discord-logo.png' />
                 </View>
 
-                <TouchableOpacity onPress={() => navigation.dispatch(CommonActions.navigate({ name: 'RegistroScreen' }))}>
+                <TouchableOpacity onPress={() => navigation.dispatch(CommonActions.navigate({ name: 'RegisterScreen' }))}>
                     <Text style={[stylesGlobal.text, stylesGlobal.textRegistro]}>¿No tienes cuenta? Registrate aquí</Text>
                 </TouchableOpacity>
 

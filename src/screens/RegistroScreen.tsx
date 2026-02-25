@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Text, TouchableOpacity, View } from 'react-native';
 import { stylesGlobal } from '../theme/AppTheme';
 import { BodyComponent } from '../components/BodyComponent';
 import { InputComponent } from '../components/InputComponent';
@@ -9,39 +9,90 @@ import { CommonActions, useNavigation } from '@react-navigation/native';
 import { ButtonMonstrar } from '../components/ButtonMonstrar';
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../common/const';
+import { User } from '../navigator/StackNavigator';
 
-interface FormRegistro {
-    nombreUsuario: string;
-    correo: string;
-    contrasena: string;
-    confirmarContrasena: string;
+interface FormRegister {
+    username: string;
+    email: string;
+    password: string;
+    passwordConfirm: string;
 }
 
-export const RegistroScreen = () => {
+//Interfaz que define las propiedades del componente
+interface Props{
+    listUsers:User[];
+    handleAddUser: (user: User) => void; //actualizar el arreglo
+}
+
+export const RegistroScreen = ({listUsers, handleAddUser}:Props) => {
     const navigation = useNavigation();
 
-    const [formRegistro, setFormRegistro] = useState<FormRegistro>({
-        nombreUsuario: '',
-        correo: '',
-        contrasena: '',
-        confirmarContrasena: ''
+    const [formRegister, setFormRegister] = useState<FormRegister>({
+        username: '',
+        email: '',
+        password: '',
+        passwordConfirm: ''
     });
 
     const handleChangeValue = (name: string, value: string) => {
-        setFormRegistro({
-            ...formRegistro,
+        setFormRegister({
+            ...formRegister,
             [name]: value
         });
     }
 
-    const handleRegistro = () => {
-        console.log('Datos de registro:', formRegistro);
+    //funcion para verificar si existe el usuario
+    const verifyUser = (): User => {
+        const existUser =listUsers.filter(user => user.email == formRegister.email)[0];
+        return existUser
+    }
+
+    //funcion para generar los ids de los nuevos usuarios
+    const getTdUser = () =>{
+        const getId = listUsers.length + 1;
+        return getId;
+    }
+
+    const handleRegister = () => {
+            //Validar los campos
+        if(formRegister.username=='' || formRegister.email=='' || formRegister.password=='' || formRegister.passwordConfirm==''){
+        Alert.alert("Error","Por favor complete todos los campos")
+            return;
+        }
+
+        if(formRegister.password !== formRegister.passwordConfirm){
+        Alert.alert("Error","Las contraseñas no coinciden")
+            return;
+        }
+
+        //Validar campo de inicio de sesion
+    if(verifyUser()){
+        Alert.alert("Error","El usuario ya se encuentra registrado")
+        return;
+    }
+    //Registrar usuarios
+        //Crear objeto user
+        const newUser: User ={
+            id: getTdUser(),
+            username: formRegister.username,
+            email: formRegister.email,
+            password: formRegister.password,
+            passwordConfirm: formRegister.passwordConfirm
+        }
+
+        //agregar objeto al arreglo
+        handleAddUser(newUser);
+        Alert.alert("Registrado","Usuario registrado con éxito")
+        //redireccionar al login
+        navigation.goBack();
+        
+        console.log('Datos de registro:', formRegister);
     }
 
     
-    const [showPassword, setShowPassword] = useState(true);
+    const [showPassword, setShowPassword] = useState<boolean>(true);
 
-    const [showPasswordConf, setShowPasswordConf] = useState(true);
+    const [showPasswordConf, setShowPasswordConf] = useState<boolean>(true);
 
 
     return (
@@ -55,7 +106,7 @@ export const RegistroScreen = () => {
                         placeholder='Nombre de Usuario'
                         placeholderTextColor='#7c7c7c'
                         handleChangeValue={handleChangeValue}
-                        name='nombreUsuario'
+                        name='username'
                         keyboardType='default'
                     />
                     
@@ -63,7 +114,7 @@ export const RegistroScreen = () => {
                         placeholder='Correo Electrónico'
                         placeholderTextColor='#7c7c7c'
                         handleChangeValue={handleChangeValue}
-                        name='correo'
+                        name='email'
                         keyboardType='email-address'
                     />
 
@@ -72,7 +123,7 @@ export const RegistroScreen = () => {
                         placeholder='Contraseña'
                         placeholderTextColor='#7c7c7c'
                         handleChangeValue={handleChangeValue}
-                        name='contrasena'
+                        name='password'
                         keyboardType='default'
                         secureTextEntry={showPassword}
                     />
@@ -86,7 +137,7 @@ export const RegistroScreen = () => {
                         placeholder='Confirmar Contraseña'
                         placeholderTextColor='#7c7c7c'
                         handleChangeValue={handleChangeValue}
-                        name='confirmarContrasena'
+                        name='passwordConfirm'
                         keyboardType='default'
                         secureTextEntry={showPasswordConf}
                     />
@@ -102,7 +153,7 @@ export const RegistroScreen = () => {
 
                 <ButtonComponent
                     buttonText='CREAR CUENTA'
-                    onPress={handleRegistro}
+                    onPress={handleRegister}
                 />
 
                 <Text style={stylesGlobal.text}> O regístrate con:</Text>
