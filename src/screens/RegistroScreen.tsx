@@ -7,6 +7,8 @@ import { ButtonComponent } from '../components/BottonComponent';
 import { ButtonRSocialComponent } from '../components/ButtonRSocialComponent';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import { ButtonMonstrar } from '../components/ButtonMonstrar';
+import Icon from '@expo/vector-icons/MaterialIcons';
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../common/const';
 
 interface FormRegistro {
     nombreUsuario: string;
@@ -39,17 +41,8 @@ export const RegistroScreen = () => {
     
     const [showPassword, setShowPassword] = useState(true);
 
-    /* const [showPasswordConf, setShowPasswordConf] = useState(true); */
+    const [showPasswordConf, setShowPasswordConf] = useState(true);
 
-    const ChangeShowText1 = () => {
-        return showPassword ? 'Mostrar Contraseña' : 'Ocultar Contraseña';
-        
-    }
-
-    /* const ChangeShowText2 = () => {
-        return showPasswordConf ? 'Mostrar Contraseña' : 'Ocultar Contraseña';
-        
-    } */
 
     return (
         <BodyComponent>
@@ -65,6 +58,7 @@ export const RegistroScreen = () => {
                         name='nombreUsuario'
                         keyboardType='default'
                     />
+                    
                     <InputComponent
                         placeholder='Correo Electrónico'
                         placeholderTextColor='#7c7c7c'
@@ -82,10 +76,11 @@ export const RegistroScreen = () => {
                         keyboardType='default'
                         secureTextEntry={showPassword}
                     />
-                    <ButtonMonstrar
-                        buttonText={ChangeShowText1()}
-                        onPress={() => setShowPassword(!showPassword)}/>
-                    
+                    <Icon name={showPassword ? 'visibility' : 'visibility-off'}
+                        color={SECONDARY_COLOR}
+                        style={stylesGlobal.IconPasswordRegister}
+                        size={20}
+                        onPress={() => setShowPassword(!showPassword)}/> 
 
                     <InputComponent
                         placeholder='Confirmar Contraseña'
@@ -93,8 +88,15 @@ export const RegistroScreen = () => {
                         handleChangeValue={handleChangeValue}
                         name='confirmarContrasena'
                         keyboardType='default'
-                        secureTextEntry={true}
+                        secureTextEntry={showPasswordConf}
                     />
+                    <Icon name={showPasswordConf ? 'visibility' : 'visibility-off'}
+                        color={SECONDARY_COLOR}
+                        style={stylesGlobal.IconPasswordConf}
+                        size={20}
+                        onPress={() => setShowPasswordConf(!showPasswordConf)}/>
+
+
 
                 </View>
 

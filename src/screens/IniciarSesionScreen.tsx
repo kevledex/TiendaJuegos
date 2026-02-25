@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { stylesGlobal } from '../theme/AppTheme'
 import { CommonActions, useNavigation } from '@react-navigation/native';
-import { ButtonMonstrar } from '../components/ButtonMonstrar';
 import { InputComponent } from '../components/InputComponent';
 import { ButtonComponent } from '../components/BottonComponent';
 import { ButtonRSocialComponent } from '../components/ButtonRSocialComponent';
 import { BodyComponent } from '../components/BodyComponent';
+import { SECONDARY_COLOR } from '../common/const';
+import Icon from '@expo/vector-icons/MaterialIcons';
 
 interface FormRegistro {
 
@@ -41,11 +42,6 @@ export const IniciarSesionScreen = () => {
     const [showPassword, setShowPassword] = useState(true);
 
 
-    const ChangeShowText = () => {
-        return showPassword ? 'Mostrar Contraseña' : 'Ocultar Contraseña';
-        
-    }
-
 
     return (
         <BodyComponent>
@@ -72,9 +68,11 @@ export const IniciarSesionScreen = () => {
                         keyboardType='default'
                         secureTextEntry={showPassword}
                     />
-                    <ButtonMonstrar
-                        buttonText={ChangeShowText()}
-                        onPress={() => setShowPassword(!showPassword)}/>
+                    <Icon name={showPassword ? 'visibility' : 'visibility-off'}
+                        color={SECONDARY_COLOR}
+                        style={stylesGlobal.IconPasswordLogin}
+                        size={20}
+                        onPress={() => setShowPassword(!showPassword)}/> 
                     
 
 

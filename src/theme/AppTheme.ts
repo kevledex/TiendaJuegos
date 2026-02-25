@@ -93,5 +93,39 @@ export const stylesGlobal = StyleSheet.create({
     image: {
         width: 40,
         height: 40
+    }, 
+
+    IconPasswordRegister:{
+        
+        position: 'absolute',
+        bottom: 109,
+        right: 19,
+        
+    },
+
+    IconPasswordLogin:{
+        
+        position: 'absolute',
+        bottom: 29,
+        right: 19,
+        
+    },
+
+        IconPasswordConf:{
+        
+        position: 'absolute',
+        bottom: 29,
+        right: 19,
+        
+    },
+
+    textRedirect: {
+        marginTop: 20,
+        fontSize: 15,
+        color: PRIMARY_COLOR,
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
+
+
 });
