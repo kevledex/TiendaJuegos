@@ -10,11 +10,21 @@ export const stylesGlobal = StyleSheet.create({
         paddingHorizontal: 30,
         paddingTop: 30
     },
+
+    containerHome: {
+        
+        paddingVertical: 40,
+        backgroundColor: PRIMARY_COLOR,
+        paddingHorizontal: 30,
+        paddingTop: 30
+    },
+
     text: {
         textAlign: 'center',
         color: SECONDARY_COLOR,
         marginBottom: 10,
     },
+
     title: {
         fontSize: 35,
         fontWeight: 'bold',
@@ -37,8 +47,7 @@ export const stylesGlobal = StyleSheet.create({
         borderWidth: 1,
         elevation: 8,
         borderRadius: 20,
-        justifyContent: 'center',
-        textAlign: 'center',
+        justifyContent: 'center', 
         backgroundColor: QUINARY_COLOR,
         marginVertical: 10,
     },
@@ -125,7 +134,52 @@ export const stylesGlobal = StyleSheet.create({
         color: PRIMARY_COLOR,
         fontWeight: 'bold',
         textAlign: 'center'
-    }
+    },
+
+    ContainerCard: {
+    width: 332,
+    height: 200,
+    flexDirection: 'row',       
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: TERTIARY_COLOR,
+    marginBottom: 10,
+    borderRadius: 10,
+},
+
+contentCard: {
+    flex: 1,
+    justifyContent: 'space-between',
+},
+
+iconContainer: {
+    marginTop: 15,
+    marginLeft: 30,
+    alignSelf: 'flex-start',
+},
+
+    titleCard: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: SECONDARY_COLOR,
+        alignSelf: 'flex-start',
+        marginLeft: 15,
+    },
+
+    
+
+    imageCard: {
+    width: 120,
+    height: 150,
+    resizeMode: 'contain',
+},
+    iconCard: {
+        flex: 1,
+        alignSelf: 'flex-end',
+        
+    },
 
 
 });

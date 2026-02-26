@@ -3,6 +3,7 @@ import { FlatList, Text, View } from 'react-native'
 import { BodyComponent } from '../../components/BodyComponent';
 import { CardProductComponent } from './components/CardProductComponent';
 import Icon from '@expo/vector-icons/MaterialIcons';
+import { BodyCompHome } from '../../components/BodyCompHome';
 
 
 export interface Product{
@@ -31,16 +32,16 @@ export const HomeScreen = () => {
     return (
     <View>
         
-        <BodyComponent>
+        <BodyCompHome>
             <FlatList 
                 data={products}
-                //renderItem={({ item }) => <Text>{item.name}</Text>}
                 renderItem={({ item }) => <CardProductComponent item={item} />}
                 keyExtractor = {item => item.id.toString()}
-                numColumns={2}
-                columnWrapperStyle={{justifyContent: 'space-between'}}
+                
+                showsHorizontalScrollIndicator={false}
             />
-        </BodyComponent>
+        </BodyCompHome>
+
     </View>
     )
 }

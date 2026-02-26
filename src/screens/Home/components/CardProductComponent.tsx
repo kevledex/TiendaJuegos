@@ -24,20 +24,34 @@ export const CardProductComponent = ({item}: Props) => {
     return (
         //framme
         <> 
-        <View >
-            <Image source={{uri: item.pathImage}}/>
-            <View>
-                <Text>{item.name}</Text>
-                <Text >${item.price.toFixed(2)}</Text>
-            </View>
-            <View style={{margin: 15}}>
-                <Icon name='add-shopping-cart' 
-                size={33} 
-                color={SECONDARY_COLOR}
-                onPress={hiddenModal}
-                />  
-            </View>          
-            </View>
+       <View style={stylesGlobal.ContainerCard}>
+  
+  {/* Contenido izquierdo */}
+  <View style={stylesGlobal.contentCard}>
+    <View>
+      <Text style={stylesGlobal.titleCard}>{item.name}</Text>
+      <Text style={stylesGlobal.text}>
+        ${item.price.toFixed(2)}
+      </Text>
+    </View>
+
+    <View style={stylesGlobal.iconContainer}>
+      <Icon
+        name="add-shopping-cart"
+        size={33}
+        color={SECONDARY_COLOR}
+        onPress={hiddenModal}
+      />
+    </View>
+  </View>
+
+  {/* Imagen derecha */}
+  <Image
+    source={{ uri: item.pathImage }}
+    style={stylesGlobal.imageCard}
+  />
+
+</View>
         
         </> 
     )
