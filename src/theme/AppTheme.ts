@@ -143,6 +143,7 @@ export const stylesGlobal = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
     imageCard: {
         width: '100%',
         height: 120,
@@ -150,31 +151,153 @@ export const stylesGlobal = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 10,
     },
+
     textGender: {
         fontSize: 13,
         fontWeight: '600',
         color: TERTIARY_COLOR,
     },
+    
+
     textPriceCard: {
         fontSize: 24,
         fontWeight: 'bold',
         color: SECONDARY_COLOR,
         marginBottom: 8,
     },
+
     titleCard: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: 'bold',
         color: SECONDARY_COLOR,
         marginBottom: 3,
     },
+
     headerModal: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottomWidth: 1,
         borderBottomColor: '#333',
-        paddingBottom: 10,
+        paddingBottom: 8,
         marginBottom: 15,
         width: '100%',
     },
+
+    containerModal: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)'
+
+    },
+    bodyModal: {
+        padding: 20,
+        backgroundColor: SENARY_COLOR,
+        borderRadius: 10
+    },
+    
+    titleModal: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: SECONDARY_COLOR,
+        marginBottom: 15,
+        
+    },
+
+    textModal: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: SECONDARY_COLOR,
+        marginBottom: 5,
+        marginTop: 5,
+    },
+
+    textTotalPrice: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 10,
+        marginBottom: 10,
+        alignSelf:'flex-start',
+        padding: 5,
+        borderRadius: 6,
+        color: '#beee11',
+        backgroundColor: '#4c6b22',
+        
+    },
+
+    buttonModal: {
+        backgroundColor: TERTIARY_COLOR,
+        paddingVertical: 15,
+        borderRadius: 10,
+        margin: 15
+    },
+    buttonModalText: {
+        textAlign: 'center',
+        color: SECONDARY_COLOR,
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+    
+
+
+
+
+
+//copia de los estilos de la profe 
+    
+    containerQuantity: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    buttonQuantity: {
+        backgroundColor: TERTIARY_COLOR,
+        height: 50,
+        width: 50,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 15
+    },
+    buttonQuantityText: {
+        color: SECONDARY_COLOR,
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+
+    textStock: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#AB1818',
+        textAlign: 'center'
+    },
+    
+    iconCard: {
+        flex: 1,
+        alignItems: 'flex-end',
+        marginTop: 2
+    },
+    
+    headerTable: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    headerDescription: {
+        flexDirection: 'row'
+    },
+    headerTextTable: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: PRIMARY_COLOR
+    },
+    containerTotalPay: {
+        alignItems: 'flex-end',
+        marginVertical: 15
+    },
+    textTotalPay: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: PRIMARY_COLOR
+    }
 });

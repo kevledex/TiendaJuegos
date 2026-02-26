@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { Product } from '../HomeScreen';
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { TERTIARY_COLOR } from '../../../common/const';
@@ -19,8 +19,12 @@ export const CardProductComponent = ({ item }: Props) => {
 
   return (
     <>
-      <View style={stylesGlobal.containerCard}>
+      <TouchableOpacity onPress={hiddenModal}>
 
+      
+      <View style={stylesGlobal.containerCard}>
+        
+      
         <View style={stylesGlobal.contentCard}>
           <Image
             source={{ uri: item.pathImage }}
@@ -40,10 +44,18 @@ export const CardProductComponent = ({ item }: Props) => {
             name='add-shopping-cart'
             size={22}
             color={TERTIARY_COLOR}
-            onPress={hiddenModal}
+            
           />
         </View>
+        <ModalProductComponent isVisible={showModal}
+        item={item}
+        hiddenModal={hiddenModal}
+        />
+      
+
       </View>
+
+      </TouchableOpacity>
     </>
   )
 }
