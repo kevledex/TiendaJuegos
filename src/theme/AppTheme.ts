@@ -10,25 +10,15 @@ export const stylesGlobal = StyleSheet.create({
         paddingHorizontal: 30,
         paddingTop: 30
     },
-
-    containerHome: {
-        
-        paddingVertical: 40,
-        backgroundColor: PRIMARY_COLOR,
-        paddingHorizontal: 30,
-        paddingTop: 30
-    },
-
     text: {
         textAlign: 'center',
         color: SECONDARY_COLOR,
         marginBottom: 10,
     },
-
     title: {
-        fontSize: 35,
+        fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 5,
+        color: SECONDARY_COLOR,
     },
     subtitulo: {
         textAlign: 'center',
@@ -47,9 +37,15 @@ export const stylesGlobal = StyleSheet.create({
         borderWidth: 1,
         elevation: 8,
         borderRadius: 20,
-        justifyContent: 'center', 
+        justifyContent: 'center',
         backgroundColor: QUINARY_COLOR,
         marginVertical: 10,
+        paddingHorizontal: 20,
+    },
+    inputText: {
+        color: SECONDARY_COLOR,
+        fontSize: 15,
+        fontWeight: 'bold'
     },
     button: {
         borderColor: QUATERNARY_COLOR,
@@ -60,26 +56,6 @@ export const stylesGlobal = StyleSheet.create({
         shadowColor: QUATERNARY_COLOR,
         marginTop: 20,
         marginBottom: 20,
-    },
-
-    buttonMostar: {
-        backgroundColor: SENARY_COLOR,
-        borderColor: TERTIARY_COLOR ,
-        width: 140,
-        height: 40,
-        borderRadius: 10,
-        elevation: 10,
-        shadowColor: QUATERNARY_COLOR,
-        margin: 20,
-        alignSelf:'center'
-        
-    },
-
-    buttonTextMostrar: {
-        color: SECONDARY_COLOR,
-        fontSize: 12,
-        textAlign: 'center',
-        fontWeight: 'bold',
     },
     containerInput: {
         marginVertical: 10,
@@ -98,36 +74,25 @@ export const stylesGlobal = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
     },
-
     image: {
         width: 40,
         height: 40
-    }, 
-
-    IconPasswordRegister:{
-        
+    },
+    IconPasswordRegister: {
         position: 'absolute',
         bottom: 109,
         right: 19,
-        
     },
-
-    IconPasswordLogin:{
-        
+    IconPasswordLogin: {
         position: 'absolute',
         bottom: 29,
         right: 19,
-        
     },
-
-        IconPasswordConf:{
-        
+    IconPasswordConf: {
         position: 'absolute',
         bottom: 29,
         right: 19,
-        
     },
-
     textRedirect: {
         marginTop: 20,
         fontSize: 15,
@@ -135,51 +100,81 @@ export const stylesGlobal = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
-
-    ContainerCard: {
-    width: 332,
-    height: 200,
-    flexDirection: 'row',       
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    borderWidth: 1,
-    borderColor: TERTIARY_COLOR,
-    marginBottom: 10,
-    borderRadius: 10,
-},
-
-contentCard: {
-    flex: 1,
-    justifyContent: 'space-between',
-},
-
-iconContainer: {
-    marginTop: 15,
-    marginLeft: 30,
-    alignSelf: 'flex-start',
-},
-
-    titleCard: {
-        fontSize: 18,
+    containerHome: {
+        flex: 1,
+        backgroundColor: QUINARY_COLOR,
+    },
+    headerHome: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+    },
+    iconHome: {
+        alignItems: 'center',
+    },
+    textIconCart: {
+        backgroundColor: SECONDARY_COLOR,
+        paddingHorizontal: 5,
+        borderRadius: 10,
+        fontWeight: 'bold',
+        fontSize: 13,
+        position: 'absolute',
+        top: -8,
+        right: -8,
+        zIndex: 1,
+    },
+    containerCard: {
+        flexDirection: 'row',
+        backgroundColor: SENARY_COLOR,
+        marginBottom: 15,
+        padding: 12,
+        borderRadius: 5,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+    },
+    contentCard: {
+        flex: 1,
+        paddingRight: 15,
+    },
+    priceContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    imageCard: {
+        width: '100%',
+        height: 120,
+        resizeMode: 'cover',
+        borderRadius: 5,
+        marginBottom: 10,
+    },
+    textGender: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: TERTIARY_COLOR,
+    },
+    textPriceCard: {
+        fontSize: 24,
         fontWeight: 'bold',
         color: SECONDARY_COLOR,
-        alignSelf: 'flex-start',
-        marginLeft: 15,
+        marginBottom: 8,
     },
-
-    
-
-    imageCard: {
-    width: 120,
-    height: 150,
-    resizeMode: 'contain',
-},
-    iconCard: {
-        flex: 1,
-        alignSelf: 'flex-end',
-        
+    titleCard: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: SECONDARY_COLOR,
+        marginBottom: 3,
     },
-
-
+    headerModal: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: '#333',
+        paddingBottom: 10,
+        marginBottom: 15,
+        width: '100%',
+    },
 });

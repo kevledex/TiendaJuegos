@@ -10,14 +10,14 @@ interface Props {
     name: string;
     secureTextEntry?: boolean;
 }
-export const InputComponent = ({placeholder, keyboardType, placeholderTextColor, handleChangeValue, name, secureTextEntry = false}: Props) => {
+export const InputComponent = ({ placeholder, keyboardType, placeholderTextColor, handleChangeValue, name, secureTextEntry = false }: Props) => {
     return (
         <View style={stylesGlobal.inputs}>
             <TextInput
                 placeholder={placeholder}
                 keyboardType={keyboardType}
                 placeholderTextColor={placeholderTextColor}
-                style={stylesGlobal.buttonText} 
+                style={stylesGlobal.inputText}
                 onChangeText={(value) => handleChangeValue(name, value)}
                 secureTextEntry={secureTextEntry}
             />

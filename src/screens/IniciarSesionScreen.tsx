@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import { stylesGlobal } from '../theme/AppTheme'
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import { InputComponent } from '../components/InputComponent';
@@ -18,12 +18,11 @@ interface FormLogin {
 
 //Interfaz que defie las propiedades de un componente
 
-interface Props{
-    users:User[];
+interface Props {
+    users: User[];
 }
 
-
-export const IniciarSesionScreen = ({users}:Props) => {
+export const IniciarSesionScreen = ({ users }: Props) => {
     const navigation = useNavigation();
 
     const [formLogin, setFormLogin] = useState<FormLogin>({
@@ -33,9 +32,9 @@ export const IniciarSesionScreen = ({users}:Props) => {
 
     });
 
-     //funcion para verificar el usuario
-    const verifyUser =(): User =>{
-        const existUser = users.filter(user => user.email == formLogin.email && user.password == formLogin.password)[0]; 
+    //funcion para verificar el usuario
+    const verifyUser = (): User => {
+        const existUser = users.filter(user => user.email == formLogin.email && user.password == formLogin.password)[0];
         return existUser
     }
 
@@ -47,25 +46,22 @@ export const IniciarSesionScreen = ({users}:Props) => {
     }
 
     const handleLogin = () => {
-        if(formLogin.email=='' || formLogin.password=='' ){
-                Alert.alert("Error","Por favor complete todos los campos")
-                    return;
-            }
-
-    //verificar si existe el usuario
-        if(!verifyUser()){
-            Alert.alert('Error','Usuario y/o Contraseña Incorrectos');
-        return;
+        if (formLogin.email == '' || formLogin.password == '') {
+            Alert.alert("Error", "Por favor complete todos los campos")
+            return;
         }
-        
-    //Navegacion a Home
+
+        //verificar si existe el usuario
+        if (!verifyUser()) {
+            Alert.alert('Error', 'Usuario y/o Contraseña Incorrectos');
+            return;
+        }
+
+        //Navegacion a Home
         navigation.dispatch(CommonActions.navigate({ name: 'Home' }))
     }
 
-    
     const [showPassword, setShowPassword] = useState<boolean>(true);
-
-
 
     return (
         <BodyComponent>
@@ -83,7 +79,6 @@ export const IniciarSesionScreen = ({users}:Props) => {
                         keyboardType='email-address'
                     />
 
-                    
                     <InputComponent
                         placeholder='Contraseña'
                         placeholderTextColor='#7c7c7c'
@@ -96,17 +91,13 @@ export const IniciarSesionScreen = ({users}:Props) => {
                         color={SECONDARY_COLOR}
                         style={stylesGlobal.IconPasswordLogin}
                         size={20}
-                        onPress={() => setShowPassword(!showPassword)}/> 
-                    
-
-
+                        onPress={() => setShowPassword(!showPassword)} />
                 </View>
 
                 <ButtonComponent
                     buttonText='INICIAR SESIÓN'
                     onPress={handleLogin}
                 />
-
                 <Text style={stylesGlobal.text}> O Inicia Sesión con:</Text>
 
                 <View style={stylesGlobal.buttonOtrasRedes}>

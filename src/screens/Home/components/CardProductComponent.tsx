@@ -2,57 +2,48 @@ import React, { useState } from 'react'
 import { Image, Text, View } from 'react-native'
 import { Product } from '../HomeScreen';
 import Icon from '@expo/vector-icons/MaterialIcons';
-import { SECONDARY_COLOR } from '../../../common/const';
+import { TERTIARY_COLOR } from '../../../common/const';
 import { stylesGlobal } from '../../../theme/AppTheme';
-
+import { ModalProductComponent } from './ModalProductComponent';
 
 interface Props {
-    item: Product;
-
+  item: Product;
 }
 
+export const CardProductComponent = ({ item }: Props) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
 
-export const CardProductComponent = ({item}: Props) => {
-    //hook usestate: gestionar el estado del modal
-    const [showModal, setShowModal] = useState<boolean>(false);
+  const hiddenModal = (): void => {
+    setShowModal(!showModal);
+  }
 
-    //funcion para mostara o ocultar el modal
-    const hiddenModal = (): void => {
-        setShowModal(!showModal);
-    }
+  return (
+    <>
+      <View style={stylesGlobal.containerCard}>
 
-    return (
-        //framme
-        <> 
-       <View style={stylesGlobal.ContainerCard}>
-  
-  {/* Contenido izquierdo */}
-  <View style={stylesGlobal.contentCard}>
-    <View>
-      <Text style={stylesGlobal.titleCard}>{item.name}</Text>
-      <Text style={stylesGlobal.text}>
-        ${item.price.toFixed(2)}
-      </Text>
-    </View>
+        <View style={stylesGlobal.contentCard}>
+          <Image
+            source={{ uri: item.pathImage }}
+            style={stylesGlobal.imageCard}
+          />
+          <Text style={stylesGlobal.titleCard}>
+            {item.name}
+          </Text>
+          <Text style={stylesGlobal.textGender}>
+            {item.gender}
+          </Text>
+        </View>
 
-    <View style={stylesGlobal.iconContainer}>
-      <Icon
-        name="add-shopping-cart"
-        size={33}
-        color={SECONDARY_COLOR}
-        onPress={hiddenModal}
-      />
-    </View>
-  </View>
-
-  {/* Imagen derecha */}
-  <Image
-    source={{ uri: item.pathImage }}
-    style={stylesGlobal.imageCard}
-  />
-
-</View>
-        
-        </> 
-    )
+        <View style={stylesGlobal.priceContainer}>
+          <Text style={stylesGlobal.textPriceCard}>${item.price}</Text>
+          <Icon
+            name='add-shopping-cart'
+            size={22}
+            color={TERTIARY_COLOR}
+            onPress={hiddenModal}
+          />
+        </View>
+      </View>
+    </>
+  )
 }

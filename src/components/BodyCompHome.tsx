@@ -11,7 +11,7 @@ export const BodyCompHome = ({ children }: Props) => {
     return (
         <View style={{
             ...stylesGlobal.containerHome,
-            height: height * 0.85
+            height: height * 0.90
         }}>
             {children}
         </View>

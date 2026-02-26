@@ -18,9 +18,10 @@ export interface User {
 export const StackNavigator = () => {
 
     //datos de prueba
-    const users: User[]=[
-        {id: 1, username: 'Kevin Cadena', email: 'kevgeek5@gmail.com', password: '12345', passwordConfirm: '12345'},
-        {id: 2, username: 'Kevin Ledesma', email: 'kevlex@gmail.com', password: '54321', passwordConfirm: '54321'}
+    const users: User[] = [
+        { id: 1, username: 'Kevin Cadena', email: 'kevgeek5@gmail.com', password: '12345', passwordConfirm: '12345' },
+        { id: 2, username: 'Kevin Ledesma', email: 'kevlex@gmail.com', password: '54321', passwordConfirm: '54321' },
+        { id: 3, username: 'kevl', email: 'prueba', password: '12', passwordConfirm: '12' }
     ]
 
     //hook useState: permite gestionar la lista de usuarios
@@ -33,28 +34,28 @@ export const StackNavigator = () => {
     }
 
     return (
-    <Stack.Navigator screenOptions={{
-        cardStyle:{
-        backgroundColor: PRIMARY_COLOR  
-    },
-    
-    headerShown: false
-    
-        }}>
-            
-        <Stack.Screen name="LoginScreen" 
-        options={{headerShown: false}}
-        children={()=> <IniciarSesionScreen users={listUsers} />} 
-        />
-        <Stack.Screen name="RegisterScreen" 
-        options={{headerShown: false}}
-        children={()=> <RegistroScreen listUsers={listUsers} handleAddUser={handleAddUser} />} 
-        />
-        <Stack.Screen name="Home" 
-        options={{headerShown: false}}
-        component={HomeScreen} 
-        />
+        <Stack.Navigator screenOptions={{
+            cardStyle: {
+                backgroundColor: PRIMARY_COLOR
+            },
 
-    </Stack.Navigator>
+            headerShown: false
+
+        }}>
+
+            <Stack.Screen name="LoginScreen"
+                options={{ headerShown: false }}
+                children={() => <IniciarSesionScreen users={listUsers} />}
+            />
+            <Stack.Screen name="RegisterScreen"
+                options={{ headerShown: false }}
+                children={() => <RegistroScreen listUsers={listUsers} handleAddUser={handleAddUser} />}
+            />
+            <Stack.Screen name="Home"
+                options={{ headerShown: false }}
+                component={HomeScreen}
+            />
+
+        </Stack.Navigator>
     );
 }
