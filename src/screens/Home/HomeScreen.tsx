@@ -104,7 +104,7 @@ export const HomeScreen = () => {
             pathImage: product.pathImage,
             gender: product.gender,
             quantity: 1,
-            total: product.price * 1,
+            total: product.price,
             
         }
 
