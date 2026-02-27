@@ -8,9 +8,10 @@ import { ModalProductComponent } from './ModalProductComponent';
 
 interface Props {
   item: Product;
+  addProduct: (id: number) => void; 
 }
 
-export const CardProductComponent = ({ item }: Props) => {
+export const CardProductComponent = ({ item, addProduct }: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const hiddenModal = (): void => {
@@ -40,17 +41,22 @@ export const CardProductComponent = ({ item }: Props) => {
 
         <View style={stylesGlobal.priceContainer}>
           <Text style={stylesGlobal.textPriceCard}>${item.price}</Text>
+          <TouchableOpacity onPress={() => addProduct(item.id)}>
           <Icon
             name='add-shopping-cart'
             size={22}
             color={TERTIARY_COLOR}
             
           />
+          </TouchableOpacity>
         </View>
-        <ModalProductComponent isVisible={showModal}
-        item={item}
-        hiddenModal={hiddenModal}
-        />
+      
+        <ModalProductComponent
+            isVisible={showModal}
+            item={item}
+            hiddenModal={hiddenModal}
+            addProduct={addProduct} 
+          />
       
 
       </View>

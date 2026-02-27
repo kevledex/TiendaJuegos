@@ -7,6 +7,7 @@ import { stylesGlobal } from '../../theme/AppTheme';
 import { SECONDARY_COLOR } from '../../common/const';
 import { TitleComponent } from '../../components/TitleComponent';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ModalCartComponent } from './components/ModalCartComponent';
 
 
 export interface Product {
@@ -22,6 +23,8 @@ export interface cart {
     id: number;
     name: string;
     price: number;
+    pathImage: string,
+    gender: string,
     quantity: number;
     total: number;
 }
@@ -78,7 +81,7 @@ export const HomeScreen = () => {
     const [cart, setCart] = useState<cart[]>([]); //arreglo del carrito
 
     //funcion para añadir productos al carrito
-    const addProduct = (id: number, quantity: number = 1): void => {
+    const addProduct = (id: number): void => {
         const product = productState.find(product => product.id == id);
 
         //si no existe el producto
@@ -98,14 +101,21 @@ export const HomeScreen = () => {
             id: product.id,
             name: product.name,
             price: product.price,
-            quantity: quantity,
-            total: product.price * quantity
+            pathImage: product.pathImage,
+            gender: product.gender,
+            quantity: 1,
+            total: product.price * 1,
+            
         }
 
         //Añadir al arreglo del carrito
         setCart([...cart, newCart]);
         console.log;
     }
+
+    const removeProduct = (id: number): void => {
+        setCart(product => product.filter(item => item.id !== id));
+    };
 
     return (
         <SafeAreaView style={stylesGlobal.containerHome}>
@@ -123,11 +133,17 @@ export const HomeScreen = () => {
                 <FlatList
                     data={productState}
                     renderItem={({ item }) => <CardProductComponent
-                        item={item} />}
+                        item={item} 
+                        addProduct={addProduct} />}
                     keyExtractor={item => item.id.toString()}
                     showsVerticalScrollIndicator={false}
                 />
             </BodyCompHome>
+            <ModalCartComponent
+                    isVisible={showModal}
+                    cart={cart}
+                    hiddenModal={hiddenModal}
+                    removeProduct={removeProduct} />
         </SafeAreaView>
     )
 }

@@ -11,19 +11,19 @@ interface Props {
     isVisible: boolean;  //mostrar modal
     item: Product;
     hiddenModal: () => void; //ocultar el modal
+    addProduct: (id: number) => void; 
     
 }
 
-export const ModalProductComponent = ({ isVisible, item, hiddenModal }: Props) => {
+export const ModalProductComponent = ({ isVisible, item, hiddenModal, addProduct}: Props) => {
     const { width } = useWindowDimensions();
     
 
     //función agregar el producto al carrito
-    const handleAddProduct = () => {
-        
-        
-        //cerrar modal
+    const handleAddProduct = () => {   
+        addProduct(item.id);
         hiddenModal();
+
     }
 
     return (
