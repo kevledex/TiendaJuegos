@@ -1,9 +1,9 @@
 import React from 'react';
-import { FlatList, Modal, Text, TouchableOpacity, useWindowDimensions, View, Image } from 'react-native';
+import { Alert, FlatList, Image, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { TERTIARY_COLOR } from '../../../common/const';
 import { stylesGlobal } from '../../../theme/AppTheme';
-import { cart } from '../HomeScreen';
+import { ButtonComponent } from '../../../components/BottonComponent';
 
 interface cartGame {
     id: number;
@@ -19,14 +19,13 @@ interface Props {
     isVisible: boolean;
     cart: cartGame[];
     hiddenModal: () => void;
-    removeProduct: (id: number) => void; 
+    removeProduct: (id: number) => void;
+    clearCart: () => void;
 }
 
-export const ModalCartComponent = ({ isVisible, cart, removeProduct,  hiddenModal}: Props) => {
+export const ModalCartComponent = ({ isVisible, cart, removeProduct, hiddenModal, clearCart }: Props) => {
     const { width } = useWindowDimensions();
-    
 
-    //función para calcular el total a pagar
     const totalPay = (): number => {
         let total: number = 0;
         cart.forEach(product => {
@@ -35,70 +34,75 @@ export const ModalCartComponent = ({ isVisible, cart, removeProduct,  hiddenModa
         return total;
     }
 
+    //funcion para comprar productos
+    const handleBuy = (): void => {
+        Alert.alert('Compra Exitosa', 'Tus juegos se han añadido a tu biblioteca');
+        clearCart();
+        hiddenModal();
+    }
+
     return (
         <Modal visible={isVisible} animationType='fade' transparent={true}>
             <View style={stylesGlobal.containerModal}>
-            <View style={{
-            ...stylesGlobal.bodyModal,
-             width: width * 0.90
-            }}>
-        <View style={stylesGlobal.headerModal}>
-            <Text style={stylesGlobal.titleModal}>Mi Carrito</Text>
-            <View style={stylesGlobal.iconCard}>
-            <Icon name='cancel'
-                color={TERTIARY_COLOR}
-                size={23}
-                onPress={hiddenModal} />
-            </View>
-        </View>
+                <View style={{
+                    ...stylesGlobal.bodyModal,
+                    width: width * 0.90
+                }}>
 
-        <View style={stylesGlobal.headerTable}>
-            <Text style={stylesGlobal.headerTextTable}>Producto</Text>
-            <View style={stylesGlobal.headerDescription}>
-            <Text style={stylesGlobal.headerTextTable}>Precio</Text>
-            <Text style={stylesGlobal.headerTextTable}>Total</Text>
-            </View>
-        </View>
+                    <View style={stylesGlobal.headerModal}>
+                        <Text style={stylesGlobal.titleModal}>Mi Carrito</Text>
+                        <Icon name='cancel' color={TERTIARY_COLOR} size={28} onPress={hiddenModal} />
+                    </View>
 
-        <FlatList
-            data={cart}
+                    {cart.length === 0 ? (
+                        <Text style={{
+                            ...stylesGlobal.textModal,
+                            textAlign: 'center',
+                            marginVertical: 30
+                        }}>Tu carrito está vacío.</Text>
+                    ) : (
+                        <FlatList
+                            data={cart}
+                            keyExtractor={item => item.id.toString()}
+                            style={{ maxHeight: 350 }}
+                            renderItem={({ item }) => (
+                                <View style={stylesGlobal.carItems}>
+                                    <Image
+                                        source={{ uri: item.pathImage }}
+                                        style={{
+                                            width: 80,
+                                            height: 40,
+                                            borderRadius: 5,
+                                            marginRight: 10,
+                                            resizeMode: 'cover'
+                                        }} />
+                                    <View style={stylesGlobal.cartItemInfo}>
+                                        <Text style={stylesGlobal.cartItemName} numberOfLines={1}>{item.name}</Text>
+                                        <Text style={stylesGlobal.cartItemPrice}>${item.price.toFixed(2)}</Text>
+                                    </View>
+                                    <TouchableOpacity onPress={() => removeProduct(item.id)}
+                                        style={stylesGlobal.deleteButton}>
+                                        <Icon name="delete" size={24} color="#ff4d4d" />
+                                    </TouchableOpacity>
+                                </View>
+                            )}
+                        />
+                    )}
 
-            renderItem={({ item }) =>
-            <View style={stylesGlobal.containerCard }>
-                <View style={stylesGlobal.contentCard}>
-                    <Image source={{ uri: item.pathImage }} style={stylesGlobal.imageCard} />
-                <View style={{ flex: 1 }}>
-                    <Text style={stylesGlobal.titleCard}>{item.name}</Text>
-                    <Text style={stylesGlobal.textGender}>{item.gender}</Text>
+                    <View style={stylesGlobal.containerTotalPay}>
+                        <Text style={stylesGlobal.textTotalPayLabel}>Total a pagar:</Text>
+                        <Text style={stylesGlobal.textTotalPayValue}>${totalPay().toFixed(2)}</Text>
+                    </View>
+
+                    {cart.length > 0 && (
+                        <View style={{ alignItems: 'center', width: '100%' }}>
+                            <ButtonComponent buttonText='FINALIZAR COMPRA'
+                                onPress={handleBuy} />
+                        </View>
+                    )}
+
                 </View>
-            </View>
-
-            <View style={stylesGlobal.priceContainer}>
-                <Text style={stylesGlobal.textPriceCard}>${item.price.toFixed(2)}</Text>
-                <Text style={{ marginLeft: 8 }}>${item.total.toFixed(2)}</Text>
-
-                <TouchableOpacity onPress={() => removeProduct(item.id)} style={{ marginLeft: 8 }}>
-                    <Icon name="delete" size={22} color={TERTIARY_COLOR} />
-                </TouchableOpacity>
-                </View>
-            </View>
-            }
-
-            keyExtractor={item => item.id.toString()}
-            style={{ maxHeight: 320 }}
-        />
-
-        <View style={stylesGlobal.containerTotalPay}>
-            <Text style={stylesGlobal.textTotalPay}>
-            Total pagar: ${totalPay().toFixed(2)}
-            </Text>
-        </View>
-
-            <TouchableOpacity style={stylesGlobal.button} onPress={() => {hiddenModal()}}>
-                <Text style={stylesGlobal.buttonText}>Comprar</Text>
-            </TouchableOpacity>
-            </View>
             </View>
         </Modal>
     )
-    }
+}

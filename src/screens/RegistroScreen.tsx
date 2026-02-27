@@ -88,7 +88,6 @@ export const RegistroScreen = ({ listUsers, handleAddUser }: Props) => {
         console.log('Datos de registro:', formRegister);
     }
 
-
     const [showPassword, setShowPassword] = useState<boolean>(true);
 
     const [showPasswordConf, setShowPasswordConf] = useState<boolean>(true);
@@ -108,7 +107,6 @@ export const RegistroScreen = ({ listUsers, handleAddUser }: Props) => {
                         name='username'
                         keyboardType='default'
                     />
-
                     <InputComponent
                         placeholder='Correo Electrónico'
                         placeholderTextColor='#7c7c7c'
@@ -116,8 +114,6 @@ export const RegistroScreen = ({ listUsers, handleAddUser }: Props) => {
                         name='email'
                         keyboardType='email-address'
                     />
-
-
                     <InputComponent
                         placeholder='Contraseña'
                         placeholderTextColor='#7c7c7c'
@@ -131,7 +127,6 @@ export const RegistroScreen = ({ listUsers, handleAddUser }: Props) => {
                         style={stylesGlobal.IconPasswordRegister}
                         size={20}
                         onPress={() => setShowPassword(!showPassword)} />
-
                     <InputComponent
                         placeholder='Confirmar Contraseña'
                         placeholderTextColor='#7c7c7c'
@@ -145,9 +140,6 @@ export const RegistroScreen = ({ listUsers, handleAddUser }: Props) => {
                         style={stylesGlobal.IconPasswordConf}
                         size={20}
                         onPress={() => setShowPasswordConf(!showPasswordConf)} />
-
-
-
                 </View>
 
                 <ButtonComponent

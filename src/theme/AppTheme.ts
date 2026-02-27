@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { PRIMARY_COLOR, QUATERNARY_COLOR, QUINARY_COLOR, SECONDARY_COLOR, SENARY_COLOR, TERTIARY_COLOR } from "../common/const";
 
 export const stylesGlobal = StyleSheet.create({
+    //estilos generales
     containerBody: {
         flex: 1,
         alignItems: 'center',
@@ -57,6 +58,12 @@ export const stylesGlobal = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
     },
+    buttonTextMostrar: {
+        color: SECONDARY_COLOR,
+        fontSize: 12,
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
     containerInput: {
         marginVertical: 10,
     },
@@ -100,6 +107,8 @@ export const stylesGlobal = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
+
+    //estilos de home
     containerHome: {
         flex: 1,
         backgroundColor: QUINARY_COLOR,
@@ -125,6 +134,8 @@ export const stylesGlobal = StyleSheet.create({
         right: -8,
         zIndex: 1,
     },
+
+    //estilos de cardcomponent
     containerCard: {
         flexDirection: 'row',
         backgroundColor: SENARY_COLOR,
@@ -143,7 +154,6 @@ export const stylesGlobal = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
     imageCard: {
         width: '100%',
         height: 120,
@@ -151,21 +161,17 @@ export const stylesGlobal = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 10,
     },
-
     textGender: {
         fontSize: 13,
         fontWeight: '600',
         color: TERTIARY_COLOR,
     },
-    
-
     textPriceCard: {
         fontSize: 24,
         fontWeight: 'bold',
         color: SECONDARY_COLOR,
         marginBottom: 8,
     },
-
     titleCard: {
         fontSize: 20,
         fontWeight: 'bold',
@@ -173,131 +179,124 @@ export const stylesGlobal = StyleSheet.create({
         marginBottom: 3,
     },
 
+    //estilos de modal
+    containerModal: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+    },
+    bodyModal: {
+        padding: 20,
+        backgroundColor: SENARY_COLOR,
+        borderRadius: 15,
+        elevation: 10,
+        borderWidth: 1,
+        borderColor: QUATERNARY_COLOR,
+    },
     headerModal: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: '#333',
-        paddingBottom: 8,
+        borderBottomColor: PRIMARY_COLOR,
+        paddingBottom: 15,
         marginBottom: 15,
-        width: '100%',
     },
-
-    containerModal: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0,0,0,0.5)'
-
-    },
-    bodyModal: {
-        padding: 20,
-        backgroundColor: SENARY_COLOR,
-        borderRadius: 10
-    },
-    
     titleModal: {
         fontWeight: 'bold',
-        fontSize: 24,
+        fontSize: 22,
         color: SECONDARY_COLOR,
-        marginBottom: 15,
-        
+        flex: 1,
+        marginRight: 10,
     },
-
+    containerImageModal: {
+        alignItems: 'center',
+        marginBottom: 15,
+    },
+    imageModal: {
+        width: '100%',
+        height: 160,
+        resizeMode: 'cover',
+        borderRadius: 8,
+    },
+    infoContainerModal: {
+        marginBottom: 20,
+    },
     textModal: {
-        fontWeight: 'bold',
         fontSize: 15,
         color: SECONDARY_COLOR,
         marginBottom: 5,
-        marginTop: 5,
     },
-
-    textTotalPrice: {
-        fontSize: 16,
-        fontWeight: 'bold',
+    footerModal: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         marginTop: 10,
-        marginBottom: 10,
-        alignSelf:'flex-start',
-        padding: 5,
-        borderRadius: 6,
-        color: '#beee11',
-        backgroundColor: '#4c6b22',
-        
     },
-
+    textTotalPrice: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: TERTIARY_COLOR,
+    },
     buttonModal: {
         backgroundColor: TERTIARY_COLOR,
-        paddingVertical: 15,
+        flexDirection: 'row',
+        paddingVertical: 12,
+        paddingHorizontal: 20,
         borderRadius: 10,
-        margin: 15
+        alignItems: 'center',
     },
     buttonModalText: {
-        textAlign: 'center',
-        color: SECONDARY_COLOR,
-        fontSize: 15,
-        fontWeight: 'bold'
-    },
-    
-
-
-
-
-
-//copia de los estilos de la profe 
-    
-    containerQuantity: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttonQuantity: {
-        backgroundColor: TERTIARY_COLOR,
-        height: 50,
-        width: 50,
-        borderRadius: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 15
-    },
-    buttonQuantityText: {
-        color: SECONDARY_COLOR,
-        fontSize: 20,
-        fontWeight: 'bold'
-    },
-
-    textStock: {
-        fontSize: 18,
+        color: PRIMARY_COLOR,
+        fontSize: 16,
         fontWeight: 'bold',
-        color: '#AB1818',
-        textAlign: 'center'
     },
-    
-    iconCard: {
+
+    //estilos del carrito
+    carItems: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: PRIMARY_COLOR,
+        padding: 12,
+        borderRadius: 8,
+        marginBottom: 10,
+    },
+    cartItemInfo: {
         flex: 1,
-        alignItems: 'flex-end',
-        marginTop: 2
+        paddingRight: 10,
     },
-    
-    headerTable: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    headerDescription: {
-        flexDirection: 'row'
-    },
-    headerTextTable: {
+    cartItemName: {
+        color: SECONDARY_COLOR,
         fontWeight: 'bold',
-        fontSize: 15,
-        color: PRIMARY_COLOR
+        fontSize: 16,
+        marginBottom: 4,
+    },
+    cartItemPrice: {
+        color: TERTIARY_COLOR,
+        fontWeight: 'bold',
+        fontSize: 14,
+    },
+    deleteButton: {
+        padding: 5,
     },
     containerTotalPay: {
-        alignItems: 'flex-end',
-        marginVertical: 15
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderTopWidth: 1,
+        borderTopColor: PRIMARY_COLOR,
+        paddingTop: 15,
+        marginVertical: 15,
     },
-    textTotalPay: {
-        fontWeight: 'bold',
+    textTotalPayLabel: {
         fontSize: 18,
-        color: PRIMARY_COLOR
-    }
+        color: SECONDARY_COLOR,
+    },
+    textTotalPayValue: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: TERTIARY_COLOR,
+    },
 });

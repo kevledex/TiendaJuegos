@@ -117,6 +117,10 @@ export const HomeScreen = () => {
         setCart(product => product.filter(item => item.id !== id));
     };
 
+    const clearCart = () => {
+        setCart([]);
+    }
+
     return (
         <SafeAreaView style={stylesGlobal.containerHome}>
             <View style={stylesGlobal.headerHome}>
@@ -143,7 +147,8 @@ export const HomeScreen = () => {
                     isVisible={showModal}
                     cart={cart}
                     hiddenModal={hiddenModal}
-                    removeProduct={removeProduct} />
+                    removeProduct={removeProduct}
+                    clearCart={clearCart}/>
         </SafeAreaView>
     )
 }

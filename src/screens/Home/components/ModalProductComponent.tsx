@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import { Image, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { Product } from '../HomeScreen';
-
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { stylesGlobal } from '../../../theme/AppTheme';
-import { TERTIARY_COLOR } from '../../../common/const';
-
+import { TERTIARY_COLOR, SECONDARY_COLOR } from '../../../common/const';
 
 interface Props {
-    isVisible: boolean;  //mostrar modal
+    isVisible: boolean;
     item: Product;
-    hiddenModal: () => void; //ocultar el modal
-    addProduct: (id: number) => void; 
-    
+    hiddenModal: () => void;
+    addProduct: (id: number) => void;
 }
 
-export const ModalProductComponent = ({ isVisible, item, hiddenModal, addProduct}: Props) => {
+export const ModalProductComponent = ({ isVisible, item, hiddenModal, addProduct }: Props) => {
     const { width } = useWindowDimensions();
-    
 
-    //función agregar el producto al carrito
-    const handleAddProduct = () => {   
+    //hook useState: permite gestionar el estado del contador
+    const [quantity, setQuantity] = useState<number>(1);
+
+    const handleAddProduct = () => {
         addProduct(item.id);
         hiddenModal();
-
     }
 
     return (
@@ -31,45 +28,35 @@ export const ModalProductComponent = ({ isVisible, item, hiddenModal, addProduct
             <View style={stylesGlobal.containerModal}>
                 <View style={{
                     ...stylesGlobal.bodyModal,
-                    width: width * 0.95
+                    width: width * 0.90
                 }}>
                     <View style={stylesGlobal.headerModal}>
-                        
-                        <View style={stylesGlobal.iconCard}>
-                            <Icon name='cancel'
-                                color={TERTIARY_COLOR}
-                                size={23}
-                                onPress={hiddenModal} />
-                        </View>
+                        <Text style={stylesGlobal.titleModal} numberOfLines={1}>{item.name}</Text>
+                        <Icon name='cancel'
+                            color={TERTIARY_COLOR} size={28}
+                            onPress={hiddenModal} />
                     </View>
-
-                    <Text style={stylesGlobal.titleModal}>{item.name} </Text>
-
-                    <View style={{ alignItems: 'center' }}>
-                        <Image source={{
-                            uri: item.pathImage
-                        }}
-                            style={stylesGlobal.imageCard} />
-                    </View>  
-                            <>            
-                    <View > 
+                    <View style={stylesGlobal.containerImageModal}>
+                        <Image source={{ uri: item.pathImage }}
+                            style={stylesGlobal.imageModal} />
+                    </View>
+                    <View style={stylesGlobal.infoContainerModal}>
                         <Text style={stylesGlobal.textModal}>
-                            Genero: <Text style={stylesGlobal.textGender}>{item.gender}</Text>
+                            Género: <Text style={stylesGlobal.textGender}>{item.gender}</Text>
                         </Text>
                         <Text style={stylesGlobal.textModal}>
                             Desarrollador: <Text style={stylesGlobal.textGender}>{item.developer}</Text>
                         </Text>
-                        
-                            <Text style={stylesGlobal.textTotalPrice}>
-                            Total: ${(item.price).toFixed(2)}
-                            </Text>
                     </View>
-                                <TouchableOpacity style={stylesGlobal.buttonModal}
-                                    onPress={handleAddProduct}>
-                                    <Text style={stylesGlobal.buttonModalText}>Agregar Carrito</Text>
-                                </TouchableOpacity>
-                            </>
-                    
+                    <View style={stylesGlobal.footerModal}>
+                        <Text style={stylesGlobal.textTotalPrice}>
+                            ${(item.price).toFixed(2)}
+                        </Text>
+                        <TouchableOpacity style={stylesGlobal.buttonModal} onPress={handleAddProduct}>
+                            <Icon name="add-shopping-cart" size={20} color={SECONDARY_COLOR} style={{ marginRight: 8 }} />
+                            <Text style={stylesGlobal.buttonModalText}>Agregar al Carrito</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </Modal>
