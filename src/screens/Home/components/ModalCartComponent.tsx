@@ -54,13 +54,13 @@ export const ModalCartComponent = ({ isVisible, cart, removeProduct, hiddenModal
                         <Icon name='cancel' color={TERTIARY_COLOR} size={28} onPress={hiddenModal} />
                     </View>
 
-                    {cart.length === 0 ? (
+                    { (cart.length === 0) ? 
                         <Text style={{
                             ...stylesGlobal.textModal,
                             textAlign: 'center',
                             marginVertical: 30
                         }}>Tu carrito está vacío.</Text>
-                    ) : (
+                        : 
                         <FlatList
                             data={cart}
                             keyExtractor={item => item.id.toString()}
@@ -87,19 +87,19 @@ export const ModalCartComponent = ({ isVisible, cart, removeProduct, hiddenModal
                                 </View>
                             )}
                         />
-                    )}
+                    }
 
                     <View style={stylesGlobal.containerTotalPay}>
                         <Text style={stylesGlobal.textTotalPayLabel}>Total a pagar:</Text>
                         <Text style={stylesGlobal.textTotalPayValue}>${totalPay().toFixed(2)}</Text>
                     </View>
 
-                    {cart.length > 0 && (
+                    {(cart.length > 0) && 
                         <View style={{ alignItems: 'center', width: '100%' }}>
                             <ButtonComponent buttonText='FINALIZAR COMPRA'
                                 onPress={handleBuy} />
                         </View>
-                    )}
+                    }
 
                 </View>
             </View>
